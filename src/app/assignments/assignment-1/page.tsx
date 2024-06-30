@@ -61,12 +61,12 @@ const Assignment1 = () => {
 
   return (
     <>
-      <div className="h-screen w-full flex items-center justify-center text-green-950 bg-green-50">
-        <div className="max-w-screen-sm mx-auto p-8 border space-y-8 rounded-lg bg-white shadow-md">
-          <h1 className="text-4xl font-semibold ">Contact Us</h1>
+      <div className="min-h-screen w-full flex items-center justify-center text-green-950 bg-green-50 px-4 py-8">
+        <div className="w-full md:max-w-screen-sm mx-auto p-6 sm:p-8 border space-y-6 sm:space-y-8 rounded-lg bg-white shadow-md">
+          <h1 className="text-3xl sm:text-4xl font-semibold ">Contact Us</h1>
           <form action="" className="space-y-6">
-            <div className="flex gap-4">
-              <div className="flex flex-col gap-2">
+            <div className="flex gap-4 flex-col sm:flex-row w-full">
+              <div className="flex flex-col gap-2 w-full">
                 <label htmlFor="first_name" className="text-lg font-medium">
                   First Name <span className="text-red-600">*</span>
                 </label>
@@ -88,7 +88,7 @@ const Assignment1 = () => {
                 )}
               </div>
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 w-full">
                 <label htmlFor="last_name" className="text-lg font-medium">
                   Last Name <span className="text-red-600">*</span>
                 </label>
@@ -135,7 +135,7 @@ const Assignment1 = () => {
               <label htmlFor="query_type" className="text-lg font-medium">
                 Query Type <span className="text-red-600">*</span>
               </label>
-              <div className="flex gap-4">
+              <div className="flex gap-4 flex-col sm:flex-row">
                 <label className="border border-zinc-400 rounded-md px-6 py-4 w-full text-lg gap-2 flex items-center cursor-pointer">
                   <input
                     type="radio"
@@ -179,9 +179,13 @@ const Assignment1 = () => {
               )}
             </div>
 
-            <label className="flex gap-2 text-lg items-center cursor-pointer w-fit">
-              <input id="email" type="checkbox" className="w-5 h-5 accent-green-700" /> I consent
-              to being contacted by the team
+            <label className="flex gap-2 text-lg items-center cursor-pointer w-fit leading-6">
+              <input
+                id="email"
+                type="checkbox"
+                className="w-5 h-5 accent-green-700"
+              />
+              I consent to being contacted by the team
             </label>
 
             <button
