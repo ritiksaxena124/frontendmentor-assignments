@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
+import toast from "react-hot-toast";
 
 interface inputField {
   isFocused: boolean;
@@ -16,7 +17,7 @@ interface formFields {
 }
 
 const Assignment1 = () => {
-  const [formData, setFormData] = useState<formFields>({
+  const defaultData = {
     firstName: {
       isFocused: false,
       isEmpty: true,
@@ -37,7 +38,8 @@ const Assignment1 = () => {
       isEmpty: true,
       value: "",
     },
-  });
+  };
+  const [formData, setFormData] = useState<formFields>(defaultData);
 
   const handleFocus = (field: keyof formFields) => {
     setFormData((prevData) => ({
@@ -59,12 +61,19 @@ const Assignment1 = () => {
     }));
   };
 
+  const handleSubmit = (e: SyntheticEvent) => {
+    e.preventDefault();
+    toast.success("Form submitted successfully", {
+      position: "top-right",
+    });
+  };
+
   return (
     <>
       <div className="min-h-screen w-full flex items-center justify-center text-green-950 bg-green-50 px-4 py-8">
         <div className="w-full md:max-w-screen-sm mx-auto p-6 sm:p-8 border space-y-6 sm:space-y-8 rounded-lg bg-white shadow-md">
           <h1 className="text-3xl sm:text-4xl font-semibold ">Contact Us</h1>
-          <form action="" className="space-y-6">
+          <form action="" className="space-y-6" onSubmit={handleSubmit}>
             <div className="flex gap-4 flex-col sm:flex-row w-full">
               <div className="flex flex-col gap-2 w-full">
                 <label htmlFor="first_name" className="text-lg font-medium">
@@ -74,6 +83,7 @@ const Assignment1 = () => {
                   id="first_name"
                   type="text"
                   name="first_name"
+                  value={formData.firstName.value}
                   className="outline outline-zinc-400 outline-1 rounded-md text-base focus:outline-zinc-700 indent-2 p-2"
                   placeholder="John"
                   onFocus={() => handleFocus("firstName")}
@@ -96,6 +106,7 @@ const Assignment1 = () => {
                   id="last_name"
                   type="text"
                   name="last_name"
+                  value={formData.firstName.value}
                   className="outline outline-zinc-400 outline-1 rounded-md text-base focus:outline-zinc-700 indent-2 p-2"
                   placeholder="Doe"
                   onFocus={() => handleFocus("lastName")}
@@ -117,6 +128,7 @@ const Assignment1 = () => {
               <input
                 id="email"
                 type="text"
+                value={formData.email.value}
                 className="outline outline-zinc-400 outline-1 rounded-md text-base focus:outline-zinc-700 indent-2 p-2"
                 placeholder="johndoe@gmail.com"
                 onFocus={() => handleFocus("email")}
@@ -151,7 +163,7 @@ const Assignment1 = () => {
                     name="query_type"
                     id="support"
                     className="w-4 h-4 accent-green-700"
-                  />{" "}
+                  />
                   Support Request
                 </label>
               </div>
@@ -164,6 +176,7 @@ const Assignment1 = () => {
               <textarea
                 name="message"
                 id="message"
+                value={formData.message.value}
                 className="outline outline-zinc-400 outline-1  h-36 rounded-md text-base focus:outline-zinc-700 indent-2 p-2"
                 placeholder="Enter your message here..."
                 onFocus={() => handleFocus("message")}
@@ -187,7 +200,6 @@ const Assignment1 = () => {
               />
               I consent to being contacted by the team
             </label>
-
             <button
               type="submit"
               className="bg-green-800 w-full text-white px-4 py-3 rounded-md font-medium text-lg hover:bg-green-900"

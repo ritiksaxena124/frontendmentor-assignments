@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Challenge 1: Contact Form",
@@ -14,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Toaster />
         {children}
       </body>
     </html>
