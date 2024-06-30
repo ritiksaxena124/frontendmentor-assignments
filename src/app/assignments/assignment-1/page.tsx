@@ -151,7 +151,7 @@ const Assignment1 = () => {
               <div className="flex gap-4 flex-col sm:flex-row">
                 <label
                   onClick={() => setQueryType("general")}
-                  className={`border rounded-md px-6 py-2 w-full text-lg gap-2 flex items-center cursor-pointer ${
+                  className={`border border-zinc-400 rounded-md px-6 py-2 w-full text-lg gap-2 flex items-center cursor-pointer ${
                     queryType === "general"
                       ? "bg-green-50 border-green-700"
                       : ""
@@ -167,7 +167,7 @@ const Assignment1 = () => {
                 </label>
                 <label
                   onClick={() => setQueryType("support")}
-                  className={`border rounded-md px-6 py-2 w-full text-lg gap-2 flex items-center cursor-pointer ${
+                  className={`border border-zinc-400 rounded-md px-6 py-2 w-full text-lg gap-2 flex items-center cursor-pointer ${
                     queryType === "support"
                       ? "bg-green-50 border-green-700"
                       : ""
