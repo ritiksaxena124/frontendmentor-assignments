@@ -40,6 +40,7 @@ const Assignment1 = () => {
     },
   };
   const [formData, setFormData] = useState<formFields>(defaultData);
+  const [queryType, setQueryType] = useState<string>("");
 
   const handleFocus = (field: keyof formFields) => {
     setFormData((prevData) => ({
@@ -148,7 +149,14 @@ const Assignment1 = () => {
                 Query Type <span className="text-red-600">*</span>
               </label>
               <div className="flex gap-4 flex-col sm:flex-row">
-                <label className="border border-zinc-400 rounded-md px-6 w-full text-lg gap-2 flex items-center cursor-pointer">
+                <label
+                  onClick={() => setQueryType("general")}
+                  className={`border rounded-md px-6 py-2 w-full text-lg gap-2 flex items-center cursor-pointer ${
+                    queryType === "general"
+                      ? "bg-green-50 border-green-700"
+                      : ""
+                  }`}
+                >
                   <input
                     type="radio"
                     name="query_type"
@@ -157,7 +165,14 @@ const Assignment1 = () => {
                   />
                   General Enquiry
                 </label>
-                <label className="border border-zinc-400 rounded-md px-6 py-2 w-full text-lg gap-2 flex items-center cursor-pointer">
+                <label
+                  onClick={() => setQueryType("support")}
+                  className={`border rounded-md px-6 py-2 w-full text-lg gap-2 flex items-center cursor-pointer ${
+                    queryType === "support"
+                      ? "bg-green-50 border-green-700"
+                      : ""
+                  }`}
+                >
                   <input
                     type="radio"
                     name="query_type"
