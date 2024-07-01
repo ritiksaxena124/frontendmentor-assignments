@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 
 export default function Home() {
@@ -12,6 +11,11 @@ export default function Home() {
           <Link href="/assignments/assignment-1">
             <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
               Assignment - 1
+            </li>
+          </Link>
+          <Link href="/assignments/assignment-2">
+            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
+              Assignment - 2: Mortgage repayment calculator
             </li>
           </Link>
         </ul>
