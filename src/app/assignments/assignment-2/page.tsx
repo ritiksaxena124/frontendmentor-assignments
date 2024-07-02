@@ -122,7 +122,7 @@ export default function () {
               <p className="text-slate-400">
                 Your results are shown below based on the information you
                 provided. To adjust the results, edit the form and click
-                "calculate repayments" again.
+                &quot;calculate repayments&quot; again.
               </p>
               <div className="w-full p-8 border-t-4 border-[#D8DB2F] bg-[#0E2431] rounded-lg flex flex-col gap-8">
                 <div className="flex flex-col gap-2">
@@ -134,7 +134,7 @@ export default function () {
                 <div className="w-full h-[1px] bg-slate-700"></div>
                 <div className="flex flex-col gap-2">
                   <p className="text-slate-400">
-                    Total you'll repay over the term
+                    Total you&apos;ll repay over the term
                   </p>
                   <p className="text-3xl font-semibold leading-none">$123456</p>
                 </div>
