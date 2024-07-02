@@ -2,9 +2,10 @@
 
 import CheckIcon from "@/assets/assignment-3/icon-list.svg";
 import IllustrationDesktop from "@/assets/assignment-3/illustration-sign-up-desktop.svg";
+import SuccessIcon from "@/assets/assignment-3/icon-success.svg";
 
 import { SyntheticEvent, useState } from "react";
-import Success from "./success/page";
+
 export default function Assignment3() {
   const [email, setEmail] = useState<string>("");
   const [focussed, setFocussed] = useState<boolean>(false);
@@ -130,5 +131,39 @@ const NewsletterContactForm = ({
         <img src={IllustrationDesktop?.src} alt="illustration" />
       </div>
     </div>
+  );
+};
+
+const Success = ({
+  email,
+  handleSuccess,
+}: {
+  email: string;
+  handleSuccess: (val: boolean) => void;
+}) => {
+  return (
+    <>
+      <div className="h-screen w-full bg-[#37384E] flex items-center justify-center">
+        <div className="bg-white rounded-3xl p-12 flex gap-4 justify-between shadow-2xl max-w-[500px] flex-col space-y-4">
+          <div>
+            <img src={SuccessIcon?.src} alt="" />
+          </div>
+          <h1 className="text-[3rem] font-bold text-[#222743] leading-tight">
+            Thanks for subscribing!
+          </h1>
+          <p>
+            A confirmation email has been sent to <strong> {email} </strong>.
+            Please open it and click the button inside to confirm your
+            subscription.
+          </p>
+          <button
+            className=" text-white px-6 py-3 text-center w-full rounded-md font-medium bg-[#222743] hover:bg-gradient-to-r from-[#FE577A] to-[#FF693E] hover:shadow-xl"
+            onClick={() => handleSuccess(false)}
+          >
+            Dismiss message
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
