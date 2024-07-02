@@ -4,7 +4,7 @@ import Graphic from "@/assets/assignment-2/illustration-empty.svg";
 import calculatorIcon from "@/assets/assignment-2/icon-calculator.svg";
 import { useState } from "react";
 
-export default function () {
+export default function Assignment2 () {
   const [type, setType] = useState<string>("");
   return (
     <>
