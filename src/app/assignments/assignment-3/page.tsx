@@ -23,7 +23,7 @@ export default function Assignment3() {
 
   return (
     <>
-      <div className="min-h-screen w-full bg-[#37384E] flex items-center justify-center px-4 sm:px-8">
+      <div className="min-h-screen w-full bg-[#37384E] flex items-center justify-center p-4 sm:px-8">
         {!success ? (
           <NewsletterContactForm
             email={email}
