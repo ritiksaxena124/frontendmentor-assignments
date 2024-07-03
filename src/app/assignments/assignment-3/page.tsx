@@ -23,7 +23,7 @@ export default function Assignment3() {
 
   return (
     <>
-      <div className="h-screen w-full bg-[#37384E] flex items-center justify-center px-4 sm:px-8">
+      <div className="min-h-screen w-full bg-[#37384E] flex items-center justify-center px-4 sm:px-8">
         {!success ? (
           <NewsletterContactForm
             email={email}
@@ -78,10 +78,10 @@ const NewsletterContactForm = ({
     }
   }
   return (
-    <div className="bg-white rounded-3xl flex flex-col-reverse md:flex-row gap-4 justify-between shadow-2xl md:p-8">
+    <div className="bg-white w-full md:w-fit rounded-3xl flex flex-col-reverse md:flex-row gap-4 justify-between shadow-2xl md:p-8">
       {/* left section */}
       <div className="space-y-5 flex flex-col justify-center px-8 pt-8 pb-12 w-full md:w-1/2 md:pl-4 lg:pl-8 md:pr-0">
-        <h1 className="text-[3rem] font-bold text-[#222743] leading-tight">
+        <h1 className="text-[2.5rem] md:text-[3rem] font-bold text-[#222743] leading-tight">
           Stay updated!
         </h1>
         <p>Join 60,000+ product managers receiving monthly updates on:</p>
