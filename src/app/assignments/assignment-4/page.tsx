@@ -108,6 +108,7 @@ export default function Page() {
                 autoFocus
                 onChange={(e) => handleInputChange("day", e)}
                 value={birthDate.day}
+                placeholder="DD"
               />
             </div>
             <div className="flex flex-col gap-3 basis-1/3">
@@ -119,6 +120,7 @@ export default function Page() {
                 value={birthDate.month}
                 min={"1"}
                 max={"12"}
+                placeholder="MM"
               />
             </div>
             <div className="flex flex-col gap-3 basis-1/3">
@@ -128,6 +130,7 @@ export default function Page() {
                 className="outline outline-1 outline-zinc-400 rounded-md p-4  font-semibold text-2xl w-full focus:outline-zinc-800 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 onChange={(e) => handleInputChange("year", e)}
                 value={birthDate.year}
+                placeholder="YYYY"
               />
             </div>
           </div>
