@@ -26,6 +26,12 @@ export default function Page() {
     year: "",
   });
 
+  const [isEmpty, setIsEmpty] = useState({
+    day: false,
+    month: false,
+    year: false,
+  });
+
   useEffect(() => {
     const date: string = new Date().toLocaleDateString();
     setPresentDate((prevData) => ({
@@ -41,6 +47,17 @@ export default function Page() {
       ...prevData,
       [field]: (e.target as HTMLInputElement).value,
     }));
+    if ((e.target as HTMLInputElement).value != "") {
+      setIsEmpty((prevData) => ({
+        ...prevData,
+        [field]: false,
+      }));
+    } else {
+      setIsEmpty((prevData) => ({
+        ...prevData,
+        [field]: true,
+      }));
+    }
   }
 
   function isLeap(year: number): boolean {
@@ -70,6 +87,14 @@ export default function Page() {
     let month;
     let year;
 
+    if (!birthDate.day || !birthDate.month || !birthDate.year) {
+      setIsEmpty({
+        day: birthDate.day == "" ? true : false,
+        month: birthDate.month == "" ? true : false,
+        year: birthDate.year == "" ? true : false,
+      });
+      return;
+    }
     year = Number(presentDate.year) - Number(birthDate.year);
     if (presentDate.month > birthDate.month) {
       month = Number(presentDate.month) - Number(birthDate.month);
@@ -104,34 +129,61 @@ export default function Page() {
               <p className="uppercase font-medium text-zinc-600">day</p>
               <input
                 type="number"
-                className="outline outline-1 outline-zinc-400 rounded-md p-4  font-semibold text-2xl w-full focus:outline-zinc-800 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className={`outline outline-1 ${
+                  isEmpty.day ? "outline-red-600" : "outline-zinc-400"
+                } rounded-md p-4  font-semibold text-2xl w-full focus:outline-zinc-800 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
                 autoFocus
                 onChange={(e) => handleInputChange("day", e)}
                 value={birthDate.day}
                 placeholder="DD"
               />
+              {isEmpty.day ? (
+                <p className="text-red-600 italic text-sm">
+                  This field is required
+                </p>
+              ) : (
+                ""
+              )}
             </div>
             <div className="flex flex-col gap-3 basis-1/3">
               <p className="uppercase font-medium text-zinc-600">month</p>
               <input
                 type="number"
-                className="outline outline-1 outline-zinc-400 rounded-md p-4  font-semibold text-2xl w-full focus:outline-zinc-800 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className={`outline outline-1 ${
+                  isEmpty.month ? "outline-red-600" : "outline-zinc-400"
+                } rounded-md p-4  font-semibold text-2xl w-full focus:outline-zinc-800 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
                 onChange={(e) => handleInputChange("month", e)}
                 value={birthDate.month}
                 min={"1"}
                 max={"12"}
                 placeholder="MM"
               />
+              {isEmpty.month ? (
+                <p className="text-red-600 italic text-sm">
+                  This field is required
+                </p>
+              ) : (
+                ""
+              )}
             </div>
             <div className="flex flex-col gap-3 basis-1/3">
               <p className="uppercase font-medium text-zinc-600">year</p>
               <input
                 type="number"
-                className="outline outline-1 outline-zinc-400 rounded-md p-4  font-semibold text-2xl w-full focus:outline-zinc-800 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className={`outline outline-1 ${
+                  isEmpty.year ? "outline-red-600" : "outline-zinc-400"
+                } rounded-md p-4  font-semibold text-2xl w-full focus:outline-zinc-800 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
                 onChange={(e) => handleInputChange("year", e)}
                 value={birthDate.year}
                 placeholder="YYYY"
               />
+              {isEmpty.year ? (
+                <p className="text-red-600 italic text-sm">
+                  This field is required
+                </p>
+              ) : (
+                ""
+              )}
             </div>
           </div>
 
