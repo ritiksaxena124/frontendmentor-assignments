@@ -94,9 +94,9 @@ export default function Page() {
                 </p>
                 <p className="text-zinc-500 text-base">5days ago</p>
                 <p className="p-4 outline outline-1 outline-zinc-200 mt-4 rounded-md text-lg">
-                  Hello, thanks for setting up the Chess Club. I've been a
-                  member for a few weeks now and I'm already having lots of fun
-                  and improving my game.
+                  Hello, thanks for setting up the Chess Club. I&apos;ve been a
+                  member for a few weeks now and I&apos;m already having lots of
+                  fun and improving my game.
                 </p>
               </div>
             </div>
@@ -118,7 +118,12 @@ export default function Page() {
                   <p className="text-zinc-500 text-base">1week ago</p>
                 </div>
                 <div className="w-16">
-                  <img src={Picture?.src} alt="image" width={56} className="w-full object-contain" />
+                  <img
+                    src={Picture?.src}
+                    alt="image"
+                    width={56}
+                    className="w-full object-contain"
+                  />
                 </div>
               </div>
             </div>
