@@ -21,13 +21,13 @@ export default function Page() {
                 </div>
                 <div className="flex flex-col lg:flex-row gap-4 pt-8 justify-between">
                   {/* column 1 */}
-                  <div className="basis-1/3">
-                    <h1 className="text-[2.75rem] lg:text-[3.25rem] leading-tight font-extrabold text-slate-900">
+                  <div className="basis-full sm:basis-1/2">
+                    <h1 className="text-[2.75rem] lg:text-[3.75rem] leading-tight font-extrabold text-slate-900">
                       The Bright Future of Web 3.0?
                     </h1>
                   </div>
                   {/* cloumn 2 */}
-                  <div className="relative basis-2/3 flex flex-col justify-between lg:pl-6">
+                  <div className="relative basis-full sm:basis-1/2 lg:basis-2/3 flex flex-col justify-between sm:pl-4 lg:pl-6">
                     <p className="text-xl leading-relaxed text-slate-600">
                       We dive into the next evolution of the web that claims to
                       put the power of the platforms back into the hands of the
