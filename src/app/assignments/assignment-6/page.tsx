@@ -7,23 +7,40 @@ import KimberlySmithAvatar from "@/assets/assignment-6/avatar-kimberly-smith.web
 import NathanPetersonAvatar from "@/assets/assignment-6/avatar-nathan-peterson.webp";
 import AnnaKimAvatar from "@/assets/assignment-6/avatar-anna-kim.webp";
 import Picture from "@/assets/assignment-6/image-chess.webp";
-import Lottie from "lottie-react";
+import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import animationData from "./testing.json";
+import SuccessLottieAnimation from "./success.json";
+import { useRef, useState } from "react";
 
 export default function Page() {
+  const lottieRef = useRef<LottieRefCurrentProps>(null);
+  const [markCompleted, setMarkedCompleted] = useState<boolean>(false);
+  function toggleMarked() {
+    if (markCompleted) {
+      setMarkedCompleted(false);
+      lottieRef?.current?.stop();
+    } else {
+      setMarkedCompleted(true);
+      lottieRef?.current?.play();
+    }
+  }
+
   return (
     <>
       <div className="w-full min-h-screen px-4 py-8 sm:px-8 lg:py-12 bg-[#F9FAFE]">
         <div className="max-w-screen-md h-full border mx-auto bg-white px-4 lg:px-8 py-10 rounded-xl text-zinc-800">
           {/* Top header */}
           <div className="flex gap-4 items-center justify-between mb-10">
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-2 lg:gap-3 items-center">
               <h1 className="text-2xl font-semibold">Notifications</h1>
               <span className="px-3 py-1 cursor-pointer font-semibold bg-[#0B327F] text-sm text-white rounded-md">
                 5
               </span>
             </div>
-            <button className="text-lg font-medium text-zinc-500 hover:text-zinc-800">
+            <button
+              onClick={toggleMarked}
+              className="text-lg font-medium text-zinc-500 hover:text-zinc-800"
+            >
               Mark all as read
             </button>
           </div>
@@ -195,6 +212,32 @@ export default function Page() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        className={`w-full h-screen fixed bg-zinc-700/50 top-0 left-0 ${
+          markCompleted ? "flex" : "hidden"
+        } items-center justify-center px-4`}
+      >
+        <div className="w-full max-w-md bg-white rounded-lg flex flex-col items-center justify-center p-8 space-y-8">
+          <div className="w-full">
+            <Lottie
+              animationData={SuccessLottieAnimation}
+              lottieRef={lottieRef}
+              className="w-full h-56"
+              loop={false}
+              autoplay={false}
+            />
+          </div>
+          <p className="text-xl text-zinc-700">
+            All notifications are marked as read
+          </p>
+          <button
+            onClick={toggleMarked}
+            className="font-medium w-full text-xl bg-zinc-900 text-white  px-8 py-3 rounded-full"
+          >
+            Close
+          </button>
         </div>
       </div>
     </>
