@@ -229,7 +229,7 @@ export default function Page() {
               autoplay={false}
             />
           </div>
-          <p className="text-xl text-zinc-700">
+          <p className="text-xl text-zinc-700 text-center">
             All notifications are marked as read
           </p>
           <button
