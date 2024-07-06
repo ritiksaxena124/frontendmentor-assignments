@@ -1,3 +1,4 @@
+"use client";
 import MarkWebberAvatar from "@/assets/assignment-6/avatar-mark-webber.webp";
 import AngelaGrayAvatar from "@/assets/assignment-6/avatar-angela-gray.webp";
 import JacobThompsonAvatar from "@/assets/assignment-6/avatar-jacob-thompson.webp";
@@ -6,6 +7,8 @@ import KimberlySmithAvatar from "@/assets/assignment-6/avatar-kimberly-smith.web
 import NathanPetersonAvatar from "@/assets/assignment-6/avatar-nathan-peterson.webp";
 import AnnaKimAvatar from "@/assets/assignment-6/avatar-anna-kim.webp";
 import Picture from "@/assets/assignment-6/image-chess.webp";
+import Lottie from "lottie-react";
+import animationData from "./testing.json";
 
 export default function Page() {
   return (
@@ -31,16 +34,24 @@ export default function Page() {
                 <img src={MarkWebberAvatar?.src} alt="avatar" width={56} />
               </div>
               <div className="text-zinc-600 w-full">
-                <p className="text-lg">
-                  <span className="font-semibold mr-2 text-zinc-700">
-                    Mark Webber
+                <div className="flex">
+                  <p className="text-lg">
+                    <span className="font-semibold mr-2 text-zinc-700">
+                      Mark Webber
+                    </span>
+                    reacted to your recent post
+                    <span className="font-semibold text-zinc-500 mx-2">
+                      My first tournament today!
+                    </span>
+                  </p>
+                  <span>
+                    <Lottie
+                      animationData={animationData}
+                      loop={true}
+                      className="w-6"
+                    />
                   </span>
-                  reacted to your recent post
-                  <span className="font-semibold text-zinc-500 mx-2">
-                    My first tournament today!
-                  </span>
-                  <span className="w-2 h-2 rounded-full bg-[#FF4B46] inline-block"></span>
-                </p>
+                </div>
                 <p className="te`xt-zinc-500 text-base">1m ago</p>
               </div>
             </div>
@@ -50,13 +61,22 @@ export default function Page() {
                 <img src={AngelaGrayAvatar?.src} alt="avatar" width={56} />
               </div>
               <div className="text-zinc-600 w-full">
-                <p className="text-lg">
-                  <span className="font-semibold mr-2 text-zinc-700">
-                    Angela Gray
+                <div className="flex">
+                  <p className="text-lg">
+                    <span className="font-semibold mr-2 text-zinc-700">
+                      Angela Gray
+                    </span>
+                    folowed you
+                  </p>
+                  <span>
+                    <Lottie
+                      animationData={animationData}
+                      loop={true}
+                      className="w-6"
+                    />
                   </span>
-                  folowed you
-                  <span className="w-2 h-2 rounded-full bg-[#FF4B46] inline-block ml-2"></span>
-                </p>
+                </div>
+
                 <p className="text-zinc-500 text-base">1m ago</p>
               </div>
             </div>
@@ -66,16 +86,25 @@ export default function Page() {
                 <img src={JacobThompsonAvatar?.src} alt="avatar" width={56} />
               </div>
               <div className="text-zinc-600 w-full">
-                <p className="text-lg">
-                  <span className="font-semibold mr-2 text-zinc-700">
-                    Jacob Thompson
+                <div className="flex">
+                  <p className="text-lg">
+                    <span className="font-semibold mr-2 text-zinc-700">
+                      Jacob Thompson
+                    </span>
+                    has joined your group
+                    <a className="font-semibold text-[#0B327F] text- mx-2">
+                      Chess Club
+                    </a>
+                    {/* <span className="w-2 h-2 rounded-full bg-[#FF4B46] inline-block"></span> */}
+                  </p>
+                  <span>
+                    <Lottie
+                      animationData={animationData}
+                      loop={true}
+                      className="w-6"
+                    />
                   </span>
-                  has joined your group
-                  <a className="font-semibold text-[#0B327F] text- mx-2">
-                    Chess Club
-                  </a>
-                  <span className="w-2 h-2 rounded-full bg-[#FF4B46] inline-block"></span>
-                </p>
+                </div>
                 <p className="text-zinc-500 text-base">1day ago</p>
               </div>
             </div>
@@ -128,7 +157,7 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="bg-[#F6FAFD] p-4 rounded-md flex gap-4">
+            <div className="bg-white p-4 rounded-md flex gap-4">
               <div className="w-16">
                 <img src={NathanPetersonAvatar?.src} alt="avatar" width={56} />
               </div>
@@ -147,7 +176,7 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="bg-[#F6FAFD] p-4 rounded-md flex gap-4">
+            <div className="bg-white p-4 rounded-md flex gap-4">
               <div className="w-16">
                 <img src={AnnaKimAvatar?.src} alt="avatar" width={56} />
               </div>
