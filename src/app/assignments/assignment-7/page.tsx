@@ -27,9 +27,9 @@ export default function Page() {
   }
   return (
     <>
-      <div className="w-full min-h-screen border-2 border-red-900 flex">
-        <div className="w-full relative overflow-hidden border-2 border-red-900">
-          <div className="absolute h-96 w-full lg:h-full lg:w-[32vw] ">
+      <div className="w-full min-h-screen flex">
+        <div className="w-full relative overflow-hidden">
+          <div className="absolute h-64 w-full lg:h-full lg:w-[35vw] ">
             <div className="w-full h-full">
               <img
                 src={GradientBGDesktop?.src}
@@ -39,21 +39,21 @@ export default function Page() {
             </div>
           </div>
           <div className="w-full h-full py-16 px-4 sm:px-8 font-[SpaceGrotesk] flex items-center justify-center">
-            <div className="flex flex-col lg:flex-row w-full max-w-5xl gap-12 lg:gap-32 justify-between items-center py-12">
+            <div className="flex flex-col lg:flex-row w-full max-w-5xl gap-12 px-4 lg:gap-32 justify-between items-center py-12">
               {/* left section */}
-              <div className="flex flex-col w-full h-[60vh] lg:h-full  justify-center items-center lg:gap-8 relative">
-                <div className="absolute z-10 w-full max-w-lg translate-y-12 sm:-translate-x-8  lg:relative lg:top-0 lg:-translate-x-[20%] lg:translate-y-0 rounded-xl overflow-hidden h-72 lg:h-64 drop-shadow-2xl">
+              <div className="flex flex-col w-full h-[45vh] lg:h-full  justify-center items-center lg:gap-8 relative">
+                <div className="absolute z-10 w-full max-w-sm md:max-w-md lg:max-w-lg translate-y-8 sm:-translate-x-8  lg:relative lg:top-0 lg:-translate-x-[20%] lg:translate-y-0 rounded-xl overflow-hidden h-56 md:h-64 drop-shadow-2xl">
                   <img
                     src={CardFront?.src}
                     alt="card-front"
                     className="absolute -z-10 w-full h-full object-cover"
                   />
-                  <div className="z-10 h-full p-8 w-full text-white">
+                  <div className="z-10 h-full p-6 md:p-8 w-full text-white">
                     <div className="w-full h-1/2">
                       <img src={CardLogo?.src} alt="card logo" width={64} />
                     </div>
                     <div className="w-full space-y-5 h-1/2 flex flex-col justify-end">
-                      <div className="flex text-3xl w-full gap-6 items-center justify-between">
+                      <div className="flex text-2xl md:text-3xl w-full items-center justify-between">
                         <span className="w-full font-semibold">
                           {cardNumber.split(" ")[0] || "0000"}
                         </span>
@@ -81,7 +81,7 @@ export default function Page() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute z-0 top-0 max-w-md -translate-y-16 sm:translate-x-8 lg:relative lg:translate-x-0 lg:-translate-y-0 w-full  lg:top-0 rounded-xl overflow-hidden h-72 lg:h-64 drop-shadow-2xl">
+                <div className="absolute z-0 top-0 max-w-sm md:max-w-md lg:max-w-lg -translate-y-16 sm:translate-x-8 lg:relative lg:translate-x-0 lg:-translate-y-0 w-full  lg:top-0 rounded-xl overflow-hidden h-56 md:h-64 drop-shadow-2xl">
                   <img
                     src={CardBack?.src}
                     alt="card back"
@@ -138,7 +138,7 @@ export default function Page() {
 
               {/* right section */}
               {!complete ? (
-                <div className="flex flex-col space-y-12 w-full px-4 md:max-w-md">
+                <div className="flex flex-col space-y-12 w-full md:max-w-md">
                   <div className="space-y-8">
                     <div className="w-full space-y-2">
                       <p className="uppercase font-semibold text-zinc-800 tracking-widest text-sm">
@@ -166,8 +166,8 @@ export default function Page() {
                         onChange={(e) => handleCardNumber(e)}
                       />
                     </div>
-                    <div className="flex gap-6 w-full">
-                      <div className="space-y-2 w-2/5">
+                    <div className="flex flex-col sm:flex-row gap-6 w-full">
+                      <div className="space-y-2 w-full sm:w-2/5">
                         <p className="uppercase font-semibold text-zinc-800 tracking-widest text-sm">
                           exp. date (mm/yy)
                         </p>
@@ -200,7 +200,7 @@ export default function Page() {
                           />
                         </div>
                       </div>
-                      <div className="space-y-2 w-3/5">
+                      <div className="space-y-2 w-full sm:w-3/5">
                         <p className="uppercase font-semibold text-zinc-800 tracking-widest text-sm">
                           cvv
                         </p>
