@@ -230,7 +230,7 @@ export default function Page() {
                       thank you!
                     </h1>
                     <p className="text-zinc-600 text-lg">
-                      we've added your card details
+                      we&apos;ve added your card details
                     </p>
                   </div>
                   <button
