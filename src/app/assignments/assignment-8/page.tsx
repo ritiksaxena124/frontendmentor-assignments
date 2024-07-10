@@ -17,9 +17,6 @@ export default function Page() {
   };
 
   const options = {
-    elements: {
-      backroundColor: "red",
-    },
     layout: {
       autoPadding: true,
     },
