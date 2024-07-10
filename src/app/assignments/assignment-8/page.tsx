@@ -29,8 +29,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="bg-[#F7E9DC] w-full min-h-screen py-8 px-4 sm:px-8">
-        <div className="flex items-center justify-center w-full h-full">
+      <div className="bg-[#F7E9DC] flex items-center justify-center w-full min-h-screen py-8 px-4 sm:px-8">
           <div className="w-full max-w-xl space-y-10">
             {/* Header */}
             <div className="bg-[#EC755D] rounded-3xl px-8 py-6 w-full flex justify-between">
@@ -64,7 +63,6 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </>
   );
