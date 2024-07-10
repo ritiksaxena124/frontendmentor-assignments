@@ -48,6 +48,11 @@ export default function Home() {
               Assignment - 8: Expenses chart component
             </li>
           </Link>
+          <Link href="/assignments/assignment-9">
+            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
+              Assignment - 9: Intro section with dropdown navigation
+            </li>
+          </Link>
         </ul>
       </div>
     </>
