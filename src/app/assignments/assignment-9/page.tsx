@@ -14,7 +14,7 @@ import CalendarIcon from "@/assets/assignment-9/icon-calendar.svg";
 import RemindersIcon from "@/assets/assignment-9/icon-reminders.svg";
 import PlanningIcon from "@/assets/assignment-9/icon-planning.svg";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Page() {
   return (
@@ -43,6 +43,8 @@ const Navbar = () => {
     company: false,
   });
 
+  const [dimensions, setDimensions] = useState(getWindowDimensions());
+
   function handleShowDropdown(item: keyof Dropdown, val: boolean) {
     const newState: Dropdown = {
       features: false,
@@ -52,6 +54,28 @@ const Navbar = () => {
 
     setShowDropDown(newState);
   }
+
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return { width, height };
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setDimensions(getWindowDimensions());
+    });
+
+    return () =>
+      window.removeEventListener("resize", () =>
+        setDimensions(getWindowDimensions())
+      );
+  }, []);
+
+  useEffect(() => {
+    if (dimensions.width > 768) {
+      setHamburgerMenuOpen(false);
+    }
+  }, [dimensions])
 
   return (
     <>
