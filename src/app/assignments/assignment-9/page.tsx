@@ -73,7 +73,13 @@ const Navbar = () => {
               <div className="md:px-2 lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515] font-medium">
                 <span>Features</span>
                 <span>
-                  <img src={DropDownIcon?.src} alt="" className="w-3" />
+                  <img
+                    src={DropDownIcon?.src}
+                    alt=""
+                    className={`w-3 ${
+                      showDropDown.features ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
                 </span>
               </div>
               {showDropDown.features && (
@@ -104,7 +110,13 @@ const Navbar = () => {
               <div className="md:px-2 lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515]">
                 <span>Company</span>
                 <span>
-                  <img src={DropDownIcon?.src} alt="" className="w-3" />
+                  <img
+                    src={DropDownIcon?.src}
+                    alt=""
+                    className={`w-3 ${
+                      showDropDown.company ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
                 </span>
               </div>
               {showDropDown.company && (
