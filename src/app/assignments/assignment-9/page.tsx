@@ -9,12 +9,17 @@ import Logo from "@/assets/assignment-9/logo.svg";
 import DropDownIcon from "@/assets/assignment-9/icon-arrow-down.svg";
 import CloseHamburgerBtn from "@/assets/assignment-9/icon-close-menu.svg";
 import HamburgerBtn from "@/assets/assignment-9/icon-menu.svg";
+import TodoListIcon from "@/assets/assignment-9/icon-todo.svg";
+import CalendarIcon from "@/assets/assignment-9/icon-calendar.svg";
+import RemindersIcon from "@/assets/assignment-9/icon-reminders.svg";
+import PlanningIcon from "@/assets/assignment-9/icon-planning.svg";
+
 import { useState } from "react";
 
 export default function Page() {
   return (
     <>
-      <div className="w-full px-4 md:px-8 lg:px-16">
+      <div className="w-full px-4 md:px-8 lg:px-16 bg-[#FAFAFA]">
         <div className="w-full">
           {/* navigation bar */}
           <Navbar />
@@ -26,12 +31,31 @@ export default function Page() {
   );
 }
 
+interface Dropdown {
+  features: boolean;
+  company: boolean;
+}
+
 const Navbar = () => {
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState<boolean>(false);
+  const [showDropDown, setShowDropDown] = useState<Dropdown>({
+    features: false,
+    company: false,
+  });
+
+  function handleShowDropdown(item: keyof Dropdown, val: boolean) {
+    const newState: Dropdown = {
+      features: false,
+      company: false,
+      [item]: val,
+    };
+
+    setShowDropDown(newState);
+  }
 
   return (
     <>
-      <nav className="py-6 sticky left-0 top-0 border-b  flex justify-between items-center md:gap-6 lg:gap-8 max-w-7xl mx-auto bg-white">
+      <nav className="py-6 sticky left-0 top-0 border-b  flex justify-between items-center md:gap-6 lg:gap-8 max-w-7xl mx-auto bg-[#FAFAFA]">
         <div className="h-8">
           <img
             src={Logo?.src}
@@ -41,17 +65,61 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex items-center justify-between w-full">
           <div className="flex md:gap-2 lg:gap-5">
-            <div className="lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515] font-medium">
-              <span>Features</span>
-              <span>
-                <img src={DropDownIcon?.src} alt="" className="w-3" />
-              </span>
+            <div
+              className=""
+              onMouseEnter={() => handleShowDropdown("features", true)}
+              onMouseLeave={() => handleShowDropdown("features", false)}
+            >
+              <div className="md:px-2 lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515] font-medium">
+                <span>Features</span>
+                <span>
+                  <img src={DropDownIcon?.src} alt="" className="w-3" />
+                </span>
+              </div>
+              {showDropDown.features && (
+                <div className="border w-fit absolute py-5 rounded-lg bg-white shadow-lg">
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <img src={TodoListIcon?.src} alt="" width={18} />
+                    <span className="text-sm">Todo List</span>
+                  </div>
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <img src={CalendarIcon?.src} alt="" width={18} />
+                    <span className="text-sm">Calendar</span>
+                  </div>
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <img src={RemindersIcon?.src} alt="" width={18} />
+                    <span className="text-sm">Reminders</span>
+                  </div>
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <img src={PlanningIcon?.src} alt="" width={18} />
+                    <span className="text-sm">Planning</span>
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="md:px-2 lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515]">
-              <span>Company</span>
-              <span>
-                <img src={DropDownIcon?.src} alt="" className="w-3" />
-              </span>
+            <div
+              onMouseEnter={() => handleShowDropdown("company", true)}
+              onMouseLeave={() => handleShowDropdown("company", false)}
+            >
+              <div className="md:px-2 lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515]">
+                <span>Company</span>
+                <span>
+                  <img src={DropDownIcon?.src} alt="" className="w-3" />
+                </span>
+              </div>
+              {showDropDown.company && (
+                <div className="border w-fit absolute py-5 rounded-lg bg-white shadow-lg">
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <span className="text-sm">History</span>
+                  </div>
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <span className="text-sm">Our Team</span>
+                  </div>
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <span className="text-sm">Blog</span>
+                  </div>
+                </div>
+              )}
             </div>
             <div className="md:px-2 lg:px-4 py-2 cursor-pointer text-zinc-600 hover:text-[#151515]">
               <span>Careers</span>
