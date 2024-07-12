@@ -16,10 +16,9 @@ import PlanningIcon from "@/assets/assignment-9/icon-planning.svg";
 
 import { useEffect, useState } from "react";
 
+import DimensionCalculator from "./DimensionCalculator";
+
 export default function Page() {
-  if(!window) {
-    return;
-  }
   return (
     <>
       <div className="w-full px-4 md:px-8 lg:px-16 bg-[#FAFAFA]">
@@ -46,7 +45,10 @@ const Navbar = () => {
     company: false,
   });
 
-  const [dimensions, setDimensions] = useState(getWindowDimensions());
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0
+  });
 
   function handleShowDropdown(item: keyof Dropdown, val: boolean) {
     const newState: Dropdown = {
@@ -58,24 +60,21 @@ const Navbar = () => {
     setShowDropDown(newState);
   }
 
-  function getWindowDimensions() {
-    const { innerWidth: width, innerHeight: height } = window;
-    return { width, height };
-  }
+
 
   useEffect(() => {
     window.addEventListener("resize", () => {
-      setDimensions(getWindowDimensions());
+      setDimensions(DimensionCalculator);
     });
 
     return () =>
       window.removeEventListener("resize", () =>
-        setDimensions(getWindowDimensions())
+        setDimensions(DimensionCalculator)
       );
   }, []);
 
   useEffect(() => {
-    if (dimensions.width > 768) {
+    if (dimensions?.width > 768) {
       setHamburgerMenuOpen(false);
     }
   }, [dimensions])
