@@ -86,19 +86,19 @@ const Navbar = () => {
                 <div className="border w-fit absolute py-5 rounded-lg bg-white shadow-lg">
                   <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
                     <img src={TodoListIcon?.src} alt="" width={18} />
-                    <span className="text-sm">Todo List</span>
+                    <span className="text-sm text-zinc-600">Todo List</span>
                   </div>
                   <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
                     <img src={CalendarIcon?.src} alt="" width={18} />
-                    <span className="text-sm">Calendar</span>
+                    <span className="text-sm text-zinc-600">Calendar</span>
                   </div>
                   <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
                     <img src={RemindersIcon?.src} alt="" width={18} />
-                    <span className="text-sm">Reminders</span>
+                    <span className="text-sm text-zinc-600">Reminders</span>
                   </div>
                   <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
                     <img src={PlanningIcon?.src} alt="" width={18} />
-                    <span className="text-sm">Planning</span>
+                    <span className="text-sm text-zinc-600">Planning</span>
                   </div>
                 </div>
               )}
@@ -122,13 +122,13 @@ const Navbar = () => {
               {showDropDown.company && (
                 <div className="border w-fit absolute py-5 rounded-lg bg-white shadow-lg">
                   <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
-                    <span className="text-sm">History</span>
+                    <span className="text-sm text-zinc-600">History</span>
                   </div>
                   <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
-                    <span className="text-sm">Our Team</span>
+                    <span className="text-sm text-zinc-600">Our Team</span>
                   </div>
                   <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
-                    <span className="text-sm">Blog</span>
+                    <span className="text-sm text-zinc-600">Blog</span>
                   </div>
                 </div>
               )}
@@ -158,7 +158,6 @@ const Navbar = () => {
             />
           </button>
         </div>
-        {/* {hamburgerMenuOpen && ( */}
         <div
           className={`w-full bg-zinc-800/75 fixed top-0 right-0 h-screen ${
             hamburgerMenuOpen ? "block" : "hidden"
@@ -180,17 +179,76 @@ const Navbar = () => {
               />
             </button>
             <div className="space-y-4">
-              <div className="lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515] font-medium">
-                <span>Features</span>
-                <span>
-                  <img src={DropDownIcon?.src} alt="" className="w-3" />
-                </span>
+              <div>
+                <div
+                  onClick={() =>
+                    handleShowDropdown("features", !showDropDown.features)
+                  }
+                  className="lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515] font-medium"
+                >
+                  <span>Features</span>
+                  <span>
+                    <img
+                      src={DropDownIcon?.src}
+                      alt=""
+                      className={`w-3 ${
+                        showDropDown.features ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
+                  </span>
+                </div>
+                {showDropDown.features && (
+                  <div className="w-full bg-white">
+                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                      <img src={TodoListIcon?.src} alt="" width={18} />
+                      <span className="text-sm text-zinc-600">Todo List</span>
+                    </div>
+                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                      <img src={CalendarIcon?.src} alt="" width={18} />
+                      <span className="text-sm text-zinc-600">Calendar</span>
+                    </div>
+                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                      <img src={RemindersIcon?.src} alt="" width={18} />
+                      <span className="text-sm text-zinc-600">Reminders</span>
+                    </div>
+                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                      <img src={PlanningIcon?.src} alt="" width={18} />
+                      <span className="text-sm text-zinc-600">Planning</span>
+                    </div>
+                  </div>
+                )}
               </div>
-              <div className="md:px-2 lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515]">
-                <span>Company</span>
-                <span>
-                  <img src={DropDownIcon?.src} alt="" className="w-3" />
-                </span>
+              <div>
+                <div
+                  onClick={() =>
+                    handleShowDropdown("company", !showDropDown.company)
+                  }
+                  className="md:px-2 lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515]"
+                >
+                  <span>Company</span>
+                  <span>
+                    <img
+                      src={DropDownIcon?.src}
+                      alt=""
+                      className={`w-3 ${
+                        showDropDown.company ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
+                  </span>
+                </div>
+                {showDropDown.company && (
+                  <div className="w-full rounded-lg bg-white">
+                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                      <span className="text-sm text-zinc-600">History</span>
+                    </div>
+                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                      <span className="text-sm text-zinc-600">Our Team</span>
+                    </div>
+                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                      <span className="text-sm text-zinc-600">Blog</span>
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="md:px-2 lg:px-4 py-2 cursor-pointer text-zinc-600 hover:text-[#151515]">
                 <span>Careers</span>
