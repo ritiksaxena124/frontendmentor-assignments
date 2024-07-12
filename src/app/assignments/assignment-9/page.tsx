@@ -17,6 +17,9 @@ import PlanningIcon from "@/assets/assignment-9/icon-planning.svg";
 import { useEffect, useState } from "react";
 
 export default function Page() {
+  if(!window) {
+    return;
+  }
   return (
     <>
       <div className="w-full px-4 md:px-8 lg:px-16 bg-[#FAFAFA]">
