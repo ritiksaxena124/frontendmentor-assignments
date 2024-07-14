@@ -79,6 +79,15 @@ const Navbar = () => {
     }
   }, [dimensions]);
 
+  useGSAP(() => {
+    gsap.to(".sidebar", {
+      duration: 0.5,
+      x: hamburgerMenuOpen ? 0 : 1000,
+      display: (!hamburgerMenuOpen ? "hidden" : "block"),
+
+    });
+  }, [hamburgerMenuOpen]);
+
   return (
     <>
       <nav className="py-6 z-10 sticky left-0 top-0 border-b  flex justify-between items-center md:gap-6 lg:gap-8 max-w-7xl mx-auto bg-[#FAFAFA]">
@@ -185,115 +194,112 @@ const Navbar = () => {
           </button>
         </div>
         <div
-          className={`w-full bg-zinc-800/75 fixed top-0 right-0 h-screen ${
-            hamburgerMenuOpen ? "block" : "hidden"
+        onClick={() => setHamburgerMenuOpen(!hamburgerMenuOpen)}
+          className={`backdrop w-full bg-zinc-800/75 z-10 fixed top-0 right-0 h-screen ${
+            hamburgerMenuOpen ? "block": "hidden" 
           }`}
+        ></div>
+        <div
+          className={`sidebar z-20 fixed right-0 top-0 w-full max-w-xs bg-white h-full py-6 px-8 ml-auto space-y-8`}
         >
-          <div
-            className={`w-full max-w-xs bg-white h-full py-6 px-8 ml-auto space-y-8 transition-transform	${
-              hamburgerMenuOpen ? "-translate-x-0" : "translate-x-full"
-            }`}
+          <button
+            className="h-5 block ml-auto"
+            onClick={() => setHamburgerMenuOpen(false)}
           >
-            <button
-              className="h-5 block ml-auto"
-              onClick={() => setHamburgerMenuOpen(false)}
-            >
-              <img
-                src={CloseHamburgerBtn?.src}
-                alt="logo"
-                className="w-full h-full object-contain"
-              />
-            </button>
-            <div className="space-y-4">
-              <div>
-                <div
-                  onClick={() =>
-                    handleShowDropdown("features", !showDropDown.features)
-                  }
-                  className="lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515] font-medium"
-                >
-                  <span>Features</span>
-                  <span>
-                    <img
-                      src={DropDownIcon?.src}
-                      alt=""
-                      className={`w-3 ${
-                        showDropDown.features ? "rotate-180" : "rotate-0"
-                      }`}
-                    />
-                  </span>
-                </div>
-                {showDropDown.features && (
-                  <div className="w-full bg-white">
-                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
-                      <img src={TodoListIcon?.src} alt="" width={18} />
-                      <span className="text-sm text-zinc-600">Todo List</span>
-                    </div>
-                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
-                      <img src={CalendarIcon?.src} alt="" width={18} />
-                      <span className="text-sm text-zinc-600">Calendar</span>
-                    </div>
-                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
-                      <img src={RemindersIcon?.src} alt="" width={18} />
-                      <span className="text-sm text-zinc-600">Reminders</span>
-                    </div>
-                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
-                      <img src={PlanningIcon?.src} alt="" width={18} />
-                      <span className="text-sm text-zinc-600">Planning</span>
-                    </div>
+            <img
+              src={CloseHamburgerBtn?.src}
+              alt="logo"
+              className="w-full h-full object-contain"
+            />
+          </button>
+          <div className="space-y-4">
+            <div>
+              <div
+                onClick={() =>
+                  handleShowDropdown("features", !showDropDown.features)
+                }
+                className="lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515] font-medium"
+              >
+                <span>Features</span>
+                <span>
+                  <img
+                    src={DropDownIcon?.src}
+                    alt=""
+                    className={`w-3 ${
+                      showDropDown.features ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </span>
+              </div>
+              {showDropDown.features && (
+                <div className="w-full bg-white">
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <img src={TodoListIcon?.src} alt="" width={18} />
+                    <span className="text-sm text-zinc-600">Todo List</span>
                   </div>
-                )}
-              </div>
-              <div>
-                <div
-                  onClick={() =>
-                    handleShowDropdown("company", !showDropDown.company)
-                  }
-                  className="md:px-2 lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515]"
-                >
-                  <span>Company</span>
-                  <span>
-                    <img
-                      src={DropDownIcon?.src}
-                      alt=""
-                      className={`w-3 ${
-                        showDropDown.company ? "rotate-180" : "rotate-0"
-                      }`}
-                    />
-                  </span>
-                </div>
-                {showDropDown.company && (
-                  <div className="w-full rounded-lg bg-white">
-                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
-                      <span className="text-sm text-zinc-600">History</span>
-                    </div>
-                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
-                      <span className="text-sm text-zinc-600">Our Team</span>
-                    </div>
-                    <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
-                      <span className="text-sm text-zinc-600">Blog</span>
-                    </div>
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <img src={CalendarIcon?.src} alt="" width={18} />
+                    <span className="text-sm text-zinc-600">Calendar</span>
                   </div>
-                )}
-              </div>
-              <div className="md:px-2 lg:px-4 py-2 cursor-pointer text-zinc-600 hover:text-[#151515]">
-                <span>Careers</span>
-              </div>
-              <div className="md:px-2 lg:px-4 py-2 cursor-pointer text-zinc-600 hover:text-[#151515] font-medium">
-                <span>About</span>
-              </div>
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <img src={RemindersIcon?.src} alt="" width={18} />
+                    <span className="text-sm text-zinc-600">Reminders</span>
+                  </div>
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <img src={PlanningIcon?.src} alt="" width={18} />
+                    <span className="text-sm text-zinc-600">Planning</span>
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="space-y-4">
-              <button className="px-4 py-2 block mx-auto text-zinc6500 font-medium hover:text-[#151515]">
-                Login
-              </button>
-              <button className="border-2 w-full block mx-auto border-zinc-500 text-zinc-600 hover:text-[#151515] hover:border-[#151515] hover:bg-zinc-50 px-4 py-2 rounded-xl font-medium tracking-wide">
-                Register
-              </button>
+            <div>
+              <div
+                onClick={() =>
+                  handleShowDropdown("company", !showDropDown.company)
+                }
+                className="md:px-2 lg:px-4 py-2 flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-[#151515]"
+              >
+                <span>Company</span>
+                <span>
+                  <img
+                    src={DropDownIcon?.src}
+                    alt=""
+                    className={`w-3 ${
+                      showDropDown.company ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </span>
+              </div>
+              {showDropDown.company && (
+                <div className="w-full rounded-lg bg-white">
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <span className="text-sm text-zinc-600">History</span>
+                  </div>
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <span className="text-sm text-zinc-600">Our Team</span>
+                  </div>
+                  <div className="flex items-center gap-4 cursor-pointer  px-6 hover:bg-zinc-100 py-2">
+                    <span className="text-sm text-zinc-600">Blog</span>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="md:px-2 lg:px-4 py-2 cursor-pointer text-zinc-600 hover:text-[#151515]">
+              <span>Careers</span>
+            </div>
+            <div className="md:px-2 lg:px-4 py-2 cursor-pointer text-zinc-600 hover:text-[#151515] font-medium">
+              <span>About</span>
             </div>
           </div>
+          <div className="space-y-4">
+            <button className="px-4 py-2 block mx-auto text-zinc6500 font-medium hover:text-[#151515]">
+              Login
+            </button>
+            <button className="border-2 w-full block mx-auto border-zinc-500 text-zinc-600 hover:text-[#151515] hover:border-[#151515] hover:bg-zinc-50 px-4 py-2 rounded-xl font-medium tracking-wide">
+              Register
+            </button>
+          </div>
         </div>
-        {/* )} */}
       </nav>
     </>
   );
@@ -305,7 +311,7 @@ const MainContainer = () => {
       y: 100,
       opacity: 0,
       duration: 1,
-      stagger: 0.5
+      stagger: 0.5,
     });
 
     gsap.from(".main-image", {
@@ -316,8 +322,8 @@ const MainContainer = () => {
 
     gsap.from(".client-logos", {
       opacity: 0,
-      duration: 2
-    })
+      duration: 2,
+    });
   });
   return (
     <>
