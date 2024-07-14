@@ -14,9 +14,11 @@ import CalendarIcon from "@/assets/assignment-9/icon-calendar.svg";
 import RemindersIcon from "@/assets/assignment-9/icon-reminders.svg";
 import PlanningIcon from "@/assets/assignment-9/icon-planning.svg";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import DimensionCalculator from "./DimensionCalculator";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export default function Page() {
   return (
@@ -47,7 +49,7 @@ const Navbar = () => {
 
   const [dimensions, setDimensions] = useState({
     width: 0,
-    height: 0
+    height: 0,
   });
 
   function handleShowDropdown(item: keyof Dropdown, val: boolean) {
@@ -59,8 +61,6 @@ const Navbar = () => {
 
     setShowDropDown(newState);
   }
-
-
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -77,11 +77,11 @@ const Navbar = () => {
     if (dimensions?.width > 768) {
       setHamburgerMenuOpen(false);
     }
-  }, [dimensions])
+  }, [dimensions]);
 
   return (
     <>
-      <nav className="py-6 sticky left-0 top-0 border-b  flex justify-between items-center md:gap-6 lg:gap-8 max-w-7xl mx-auto bg-[#FAFAFA]">
+      <nav className="py-6 z-10 sticky left-0 top-0 border-b  flex justify-between items-center md:gap-6 lg:gap-8 max-w-7xl mx-auto bg-[#FAFAFA]">
         <div className="h-8">
           <img
             src={Logo?.src}
@@ -300,25 +300,50 @@ const Navbar = () => {
 };
 
 const MainContainer = () => {
+  useGSAP(() => {
+    gsap.from(".heading, .short-desc, .btn", {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.5
+    });
+
+    gsap.from(".main-image", {
+      scale: 2,
+      duration: 1,
+      opacity: 0,
+    });
+
+    gsap.from(".client-logos", {
+      opacity: 0,
+      duration: 2
+    })
+  });
   return (
     <>
       <main className="w-full max-w-7xl mx-auto py-20 flex flex-col-reverse gap-16 md:gap-0 md:flex-row">
         {/* left section */}
         <section className="w-full flex content-stretch flex-col justify-between gap-20 md:gap-16 px-0 xl:px-24">
           <div className="space-y-6 md:space-y-10 lg:space-y-16 md:py-12 lg:py-16">
-            <h1 className="font-bold text-[2.25rem] text-center md:text-left md:text-[3.125rem] lg:text-[4.75rem] xl:text-[6rem] leading-none text-[#151515]">
-              Make remote work
-            </h1>
-            <p className="text-center md:text-left md:text-base lg:text-xl text-zinc-500 font-medium">
-              Get your team in sync, no matter your location. Streamline
-              processes, create team rituals and watch productivity soar.
-            </p>
-            <button className="bg-[#151515] border-2 border-[#151515] mx-auto block md:inline-block md:mr-auto hover:bg-slate-50 hover:text-[#151515] px-8 py-4 rounded-2xl text-white font-semibold tracking-wide">
-              Learn more
-            </button>
+            <div className="overflow-hidden">
+              <h1 className="heading overfl font-bold text-[2.25rem] text-center md:text-left md:text-[3.125rem] lg:text-[4.75rem] xl:text-[6rem] leading-none text-[#151515]">
+                Make remote work
+              </h1>
+            </div>
+            <div className="overflow-hidden">
+              <p className="short-desc text-center md:text-left md:text-base lg:text-xl text-zinc-500 font-medium">
+                Get your team in sync, no matter your location. Streamline
+                processes, create team rituals and watch productivity soar.
+              </p>
+            </div>
+            <div className="overflow-hidden">
+              <button className="btn bg-[#151515] border-2 border-[#151515] mx-auto block md:inline-block md:mr-auto hover:bg-slate-50 hover:text-[#151515] px-8 py-4 rounded-2xl text-white font-semibold tracking-wide">
+                Learn more
+              </button>
+            </div>
           </div>
           {/* clients logo */}
-          <div className="flex flex-wrap md:flex-nowrap gap-4 justify-center md:justify-between items-center w-full">
+          <div className="client-logos flex flex-wrap md:flex-nowrap gap-4 justify-center md:justify-between items-center w-full">
             <img
               src={Client1?.src}
               alt="client1"
@@ -345,8 +370,8 @@ const MainContainer = () => {
           </div>
         </section>
         {/* right section */}
-        <section>
-          <div className="w-full h-full hidden md:block md:pl-16">
+        <section className="overflow-hidden">
+          <div className="w-full h-full hidden md:block md:pl-16 main-image">
             <img
               src={HeroImgDesktop?.src}
               alt=""
