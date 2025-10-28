@@ -7,10 +7,12 @@ import KimberlySmithAvatar from "@/assets/assignment-6/avatar-kimberly-smith.web
 import NathanPetersonAvatar from "@/assets/assignment-6/avatar-nathan-peterson.webp";
 import AnnaKimAvatar from "@/assets/assignment-6/avatar-anna-kim.webp";
 import Picture from "@/assets/assignment-6/image-chess.webp";
-import Lottie, { LottieRefCurrentProps } from "lottie-react";
+import { LottieRefCurrentProps } from "lottie-react";
 import animationData from "./testing.json";
 import SuccessLottieAnimation from "./success.json";
 import { useRef, useState } from "react";
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 export default function Page() {
   const lottieRef = useRef<LottieRefCurrentProps>(null);
