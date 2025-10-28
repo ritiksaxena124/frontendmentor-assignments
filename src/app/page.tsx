@@ -1,64 +1,74 @@
 import Link from "next/link";
+import assignments from "./data.json";
 
 export default function Home() {
   return (
     <>
-      <div className="mx-auto max-w-screen-xl px-2 md:px-8 lg:px-16 py-16">
-        <h1 className="text-3xl font-semibold text-center text-zinc-800">
-          Frontend Mentor Assignments
-        </h1>
-        <ul className="list-decimal pt-16 flex flex-col gap-4">
-          <Link href="/assignments/assignment-1">
-            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
-              Assignment - 1
-            </li>
-          </Link>
-          <Link href="/assignments/assignment-2">
-            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
-              Assignment - 2: Mortgage repayment calculator
-            </li>
-          </Link>
-          <Link href="/assignments/assignment-3">
-            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
-              Assignment - 3: Newsletter sign-up form
-            </li>
-          </Link>
-          <Link href="/assignments/assignment-4">
-            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
-              Assignment - 4: Age Calculator App
-            </li>
-          </Link>
-          <Link href="/assignments/assignment-5">
-            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
-              Assignment - 5: News Homepage
-            </li>
-          </Link>
-          <Link href="/assignments/assignment-6">
-            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
-              Assignment - 6: Notifications page
-            </li>
-          </Link>
-          <Link href="/assignments/assignment-7">
-            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
-              Assignment - 7: Interactive card details form
-            </li>
-          </Link>
-          <Link href="/assignments/assignment-8">
-            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
-              Assignment - 8: Expenses chart component
-            </li>
-          </Link>
-          <Link href="/assignments/assignment-9">
-            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
-              Assignment - 9: Intro section with dropdown navigation
-            </li>
-          </Link>
-          <Link href="/assignments/assignment-10">
-            <li className="text-2xl px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
-              Assignment - 10
-            </li>
-          </Link>
-        </ul>
+      <div className="min-h-screen w-full relative">
+        {/* Dashed Grid */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+              linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+            `,
+            backgroundSize: "20px 20px",
+            backgroundPosition: "0 0, 0 0",
+            maskImage: `
+              repeating-linear-gradient(
+                to right,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              repeating-linear-gradient(
+                to bottom,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              )
+            `,
+            WebkitMaskImage: `
+              repeating-linear-gradient(
+                to right,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              repeating-linear-gradient(
+                to bottom,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              )
+            `,
+            maskComposite: "intersect",
+            WebkitMaskComposite: "source-in",
+          }}
+        />
+        {/* Your Content/Components */}
+        <div className="mx-auto max-w-screen-xl px-2 md:px-8 lg:px-16 py-16 relative z-1">
+          <h1 className="text-3xl font-semibold text-center text-zinc-800">
+            Frontend Mentor Assignments
+          </h1>
+          <ul className="list-decimal pt-16 grid grid-cols-1 md:grid-cols-2 gap-4">
+            {assignments.map((assigment, index) => (
+              <Link
+                key={`${assigment.id}`}
+                href={`/assignments/assignment-${index + 1}`}
+              >
+                <li className="text-base list-inside px-4 py-2 rounded-md cursor-pointer bg-slate-100 hover:bg-slate-200">
+                  {`Assignment - ${index + 1}: ${assigment.title}`}
+                </li>
+              </Link>
+            ))}
+          </ul>
+        </div>
       </div>
     </>
   );
