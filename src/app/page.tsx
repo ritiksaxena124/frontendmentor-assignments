@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { assignments } from "./data";
+import { assignments } from "./assignments";
 
 export default function Home() {
   return (
