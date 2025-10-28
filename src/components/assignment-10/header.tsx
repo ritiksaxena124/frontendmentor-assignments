@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { SunIcon } from "../img/sun-icon";
-import { Logo } from "../img/logo";
+import { SunIcon } from "../../app/assignments/assignment-10/img/sun-icon";
+import { Logo } from "../../app/assignments/assignment-10/img/logo";
 
 const Header = () => {
   return (
