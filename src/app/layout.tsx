@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 
 const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 
@@ -15,10 +16,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={roboto.className} cz-shortcut-listen="true">
-        {children}
+    <html lang="en" className="dark"
+      style={{
+        colorScheme: "dark"
+      }}
+    >
+      <body className={roboto.className} cz-shortcut-listen="true" data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.1260.0"
+      >
+        <ThemeProvider attribute="class" defaultTheme="light">
+          {children}
+        </ThemeProvider>
       </body>
-    </html>
+    </html >
   );
 }
